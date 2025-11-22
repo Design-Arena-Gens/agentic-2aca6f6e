@@ -1,0 +1,103 @@
+@import "tailwindcss";
+
+:root {
+  --background: 255 252 247;
+  --foreground: 33 23 15;
+  --accent: 194 104 36;
+  --accent-soft: 248 214 179;
+  --accent-muted: 235 170 109;
+}
+
+@theme inline {
+  --color-background: rgb(var(--background) / <alpha-value>);
+  --color-foreground: rgb(var(--foreground) / <alpha-value>);
+  --color-accent: rgb(var(--accent) / <alpha-value>);
+  --color-accent-soft: rgb(var(--accent-soft) / <alpha-value>);
+  --color-accent-muted: rgb(var(--accent-muted) / <alpha-value>);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  color: rgb(var(--foreground));
+  font-family: var(--font-geist-sans), system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+  background:
+      radial-gradient(circle at 10% 20%, rgba(255, 226, 193, 0.6), transparent 55%),
+      radial-gradient(circle at 90% 10%, rgba(169, 215, 255, 0.35), transparent 50%),
+      radial-gradient(circle at 15% 85%, rgba(255, 207, 207, 0.45), transparent 60%),
+      #fffaf4;
+  min-height: 100vh;
+  scroll-behavior: smooth;
+}
+
+.grain-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: 
+    radial-gradient(circle at 1px 1px, rgba(0, 0, 0, 0.06) 1px, transparent 0),
+    radial-gradient(circle at 3px 2px, rgba(0, 0, 0, 0.04) 1px, transparent 0),
+    radial-gradient(circle at 1px 3px, rgba(0, 0, 0, 0.03) 1px, transparent 0);
+  background-size: 3px 3px, 6px 6px, 4px 4px;
+  opacity: 0.08;
+  mix-blend-mode: soft-light;
+}
+
+.section-shell {
+  position: relative;
+  overflow: hidden;
+  border-radius: 2.5rem;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(18px);
+  box-shadow:
+    0 40px 120px rgba(114, 64, 10, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+@media (min-width: 768px) {
+  .section-shell {
+    border-radius: 3rem;
+  }
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.3rem 0.85rem;
+  border-radius: 999px;
+  background: rgba(194, 104, 36, 0.1);
+  color: rgb(var(--accent));
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.02em;
+}
+
+.ornament {
+  position: absolute;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  filter: blur(0);
+  opacity: 0.45;
+  pointer-events: none;
+  background: radial-gradient(circle at center, rgba(234, 120, 45, 0.35), transparent 70%);
+}
+
+.ornament-ring {
+  position: absolute;
+  width: 360px;
+  height: 360px;
+  border-radius: 50%;
+  border: 1px solid rgba(194, 104, 36, 0.18);
+  inset: 0;
+  margin: auto;
+  pointer-events: none;
+}
+
+::selection {
+  background: rgba(194, 104, 36, 0.2);
+  color: rgb(var(--foreground));
+}
